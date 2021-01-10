@@ -1,0 +1,71 @@
+import { Advance, City, Gold, Unit } from '../../GoodyHuts';
+import {
+  CityRegistry,
+  instance as cityRegistryInstance,
+} from '@civ-clone/core-city/CityRegistry';
+import {
+  Grassland,
+  Plains,
+  River,
+} from '@civ-clone/base-terrain-civ1/Terrains';
+import {
+  PlayerResearchRegistry,
+  instance as playerResearchRegistryInstance,
+} from '@civ-clone/core-science/PlayerResearchRegistry';
+import Action from '@civ-clone/core-goody-hut/Rules/Action';
+import Criterion from '@civ-clone/core-rule/Criterion';
+import Effect from '@civ-clone/core-rule/Effect';
+import GoodyHut from '@civ-clone/core-goody-hut/GoodyHut';
+import Terrain from '@civ-clone/core-terrain/Terrain';
+import PlayerUnit from '@civ-clone/core-unit/Unit';
+
+export const getRules: (
+  playerResearchRegistry?: PlayerResearchRegistry,
+  cityRegistry?: CityRegistry
+) => Action[] = (
+  playerResearchRegistry: PlayerResearchRegistry = playerResearchRegistryInstance,
+  cityRegistry: CityRegistry = cityRegistryInstance
+): Action[] => [
+  new Action(
+    new Criterion(
+      (goodyHut: GoodyHut, unit: PlayerUnit): boolean =>
+        playerResearchRegistry.getByPlayer(unit.player()).available().length > 0
+    ),
+    new Effect(
+      (goodyHut: GoodyHut, unit: PlayerUnit) => new Advance(goodyHut, unit)
+    )
+  ),
+  new Action(
+    new Criterion((goodyHut) =>
+      [Grassland, Plains, River].some(
+        (TerrainType: typeof Terrain) =>
+          goodyHut.tile().terrain() instanceof TerrainType
+      )
+    ),
+    new Criterion(
+      (goodyHut: GoodyHut, unit: PlayerUnit) =>
+        goodyHut.tile().getSurroundingArea().score(unit.player()) >= 120
+    ),
+    new Criterion((goodyHut) =>
+      goodyHut
+        .tile()
+        .getSurroundingArea(4)
+        .every((tile) => cityRegistry.getByTile(tile).length === 0)
+    ),
+    new Effect(
+      (goodyHut: GoodyHut, unit: PlayerUnit) => new City(goodyHut, unit)
+    )
+  ),
+  new Action(
+    new Effect(
+      (goodyHut: GoodyHut, unit: PlayerUnit) => new Gold(goodyHut, unit)
+    )
+  ),
+  new Action(
+    new Effect(
+      (goodyHut: GoodyHut, unit: PlayerUnit) => new Unit(goodyHut, unit)
+    )
+  ),
+];
+
+export default getRules;
