@@ -1,4 +1,4 @@
-# base-goody-hut-civ1
+# civ1-goody-hut
 
-This is a template repo.
-
+`Rule`s governing how `GoodyHut`s behave, the rewards available (and what exactly they provide). Aims for Civ 1
+compatibility.

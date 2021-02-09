@@ -3,11 +3,7 @@ import {
   CityRegistry,
   instance as cityRegistryInstance,
 } from '@civ-clone/core-city/CityRegistry';
-import {
-  Grassland,
-  Plains,
-  River,
-} from '@civ-clone/base-terrain-civ1/Terrains';
+import { Grassland, Plains, River } from '@civ-clone/civ1-world/Terrains';
 import {
   PlayerResearchRegistry,
   instance as playerResearchRegistryInstance,

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getRules = void 0;
 const GoodyHuts_1 = require("../../GoodyHuts");
 const CityRegistry_1 = require("@civ-clone/core-city/CityRegistry");
-const Terrains_1 = require("@civ-clone/base-terrain-civ1/Terrains");
+const Terrains_1 = require("@civ-clone/civ1-world/Terrains");
 const PlayerResearchRegistry_1 = require("@civ-clone/core-science/PlayerResearchRegistry");
 const Action_1 = require("@civ-clone/core-goody-hut/Rules/Action");
 const Criterion_1 = require("@civ-clone/core-rule/Criterion");
