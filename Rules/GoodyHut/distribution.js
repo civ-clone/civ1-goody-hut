@@ -8,7 +8,7 @@ const getRules = (goodyHutRegistry = GoodyHutRegistry_1.instance, randomNumberGe
     new Distribution_1.default(new Criterion_1.default((tile) => tile.isLand())),
     new Distribution_1.default(new Criterion_1.default((tile) => tile
         .getSurroundingArea(3)
-        .every((tile) => goodyHutRegistry.getByTile(tile).length === 0))),
+        .every((tile) => goodyHutRegistry.getByTile(tile) === null))),
     new Distribution_1.default(new Criterion_1.default(() => randomNumberGenerator() < 0.05)),
 ];
 exports.getRules = getRules;

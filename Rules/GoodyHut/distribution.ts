@@ -19,7 +19,7 @@ export const getRules: (
       tile
         .getSurroundingArea(3)
         .every(
-          (tile: Tile): boolean => goodyHutRegistry.getByTile(tile).length === 0
+          (tile: Tile): boolean => goodyHutRegistry.getByTile(tile) === null
         )
     )
   ),

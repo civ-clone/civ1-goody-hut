@@ -28,6 +28,7 @@
     "@civ-clone/base-goody-hut-gold": "^0.1.0",
     "@civ-clone/base-goody-hut-unit": "^0.1.0",
     "@civ-clone/civ1-science": "github:civ-clone/civ1-science",
+    "@civ-clone/civ1-unit": "github:civ-clone/civ1-unit",
     "@civ-clone/civ1-world": "github:civ-clone/civ1-world",
     "@civ-clone/core-city": "^0.1.0",
     "@civ-clone/core-engine": "^0.1.0",
