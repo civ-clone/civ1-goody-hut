@@ -9,6 +9,7 @@ const Action_1 = require("@civ-clone/core-goody-hut/Rules/Action");
 const Criterion_1 = require("@civ-clone/core-rule/Criterion");
 const Effect_1 = require("@civ-clone/core-rule/Effect");
 const getRules = (playerResearchRegistry = PlayerResearchRegistry_1.instance, cityRegistry = CityRegistry_1.instance) => [
+    // TODO: Have an action for when there are no actions ("The hut is long abandoned...")
     new Action_1.default(new Criterion_1.default((goodyHut, unit) => playerResearchRegistry.getByPlayer(unit.player()).available().length > 0), new Effect_1.default((goodyHut, unit) => new GoodyHuts_1.Advance(goodyHut, unit))),
     new Action_1.default(new Criterion_1.default((goodyHut) => [Terrains_1.Grassland, Terrains_1.Plains, Terrains_1.River].some((TerrainType) => goodyHut.tile().terrain() instanceof TerrainType)), new Criterion_1.default((goodyHut, unit) => goodyHut.tile().getSurroundingArea().score(unit.player()) >= 120), new Criterion_1.default((goodyHut) => goodyHut
         .tile()

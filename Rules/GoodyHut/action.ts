@@ -22,6 +22,7 @@ export const getRules: (
   playerResearchRegistry: PlayerResearchRegistry = playerResearchRegistryInstance,
   cityRegistry: CityRegistry = cityRegistryInstance
 ): Action[] => [
+  // TODO: Have an action for when there are no actions ("The hut is long abandoned...")
   new Action(
     new Criterion(
       (goodyHut: GoodyHut, unit: PlayerUnit): boolean =>
