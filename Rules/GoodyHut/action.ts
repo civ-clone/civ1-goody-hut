@@ -11,9 +11,12 @@ import {
 import Action from '@civ-clone/core-goody-hut/Rules/Action';
 import Criterion from '@civ-clone/core-rule/Criterion';
 import Effect from '@civ-clone/core-rule/Effect';
+import Food from '@civ-clone/base-terrain-yield-food/Food';
 import GoodyHut from '@civ-clone/core-goody-hut/GoodyHut';
-import Terrain from '@civ-clone/core-terrain/Terrain';
 import PlayerUnit from '@civ-clone/core-unit/Unit';
+import Production from '@civ-clone/base-terrain-yield-production/Production';
+import Terrain from '@civ-clone/core-terrain/Terrain';
+import Trade from '@civ-clone/base-terrain-yield-trade/Trade';
 
 export const getRules: (
   playerResearchRegistry?: PlayerResearchRegistry,
@@ -41,7 +44,14 @@ export const getRules: (
     ),
     new Criterion(
       (goodyHut: GoodyHut, unit: PlayerUnit) =>
-        goodyHut.tile().getSurroundingArea().score(unit.player()) >= 120
+        goodyHut
+          .tile()
+          .getSurroundingArea()
+          .score(unit.player(), [
+            [Food, 4],
+            [Production, 2],
+            [Trade, 1],
+          ]) >= 120
     ),
     new Criterion((goodyHut) =>
       goodyHut

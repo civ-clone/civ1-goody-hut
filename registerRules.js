@@ -8,5 +8,5 @@ const RuleRegistry_1 = require("@civ-clone/core-rule/RuleRegistry");
 const unit_1 = require("./Rules/GoodyHut/unit");
 const moved_1 = require("./Rules/Unit/moved");
 const built_1 = require("./Rules/World/built");
-RuleRegistry_1.instance.register(...action_1.default(), ...action_performed_1.default(), ...discovered_1.default(), ...distribution_1.default(), ...unit_1.default(), ...moved_1.default(), ...built_1.default());
+RuleRegistry_1.instance.register(...(0, action_1.default)(), ...(0, action_performed_1.default)(), ...(0, discovered_1.default)(), ...(0, distribution_1.default)(), ...(0, unit_1.default)(), ...(0, moved_1.default)(), ...(0, built_1.default)());
 //# sourceMappingURL=registerRules.js.map

@@ -22,19 +22,17 @@ export const getRules: (
   ruleRegistry: RuleRegistry = ruleRegistryInstance
 ): UnitRule[] => [
   new UnitRule(
-    new Effect(
-      (goodyHut: GoodyHut, unit: Unit): Unit => {
-        const availableUnits = [Horseman, Swordman],
-          RandomUnit =
-            availableUnits[
-              Math.floor(availableUnits.length * randomNumberGenerator())
-            ];
+    new Effect((goodyHut: GoodyHut, unit: Unit): Unit => {
+      const availableUnits = [Horseman, Swordman],
+        RandomUnit =
+          availableUnits[
+            Math.floor(availableUnits.length * randomNumberGenerator())
+          ];
 
-        // TODO: detect nearby city, same as civ1
-        // https://forums.civfanatics.com/threads/when-do-bribed-units-become-owned.648334/#post-15510296
-        return new RandomUnit(null, unit.player(), unit.tile(), ruleRegistry);
-      }
-    )
+      // TODO: detect nearby city, same as civ1
+      // https://forums.civfanatics.com/threads/when-do-bribed-units-become-owned.648334/#post-15510296
+      return new RandomUnit(null, unit.player(), unit.tile(), ruleRegistry);
+    })
   ),
 ];
 
