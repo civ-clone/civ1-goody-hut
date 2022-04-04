@@ -18,10 +18,10 @@ const getRules = (playerResearchRegistry = PlayerResearchRegistry_1.instance, ci
         .tile()
         .getSurroundingArea()
         .score(unit.player(), [
-        [Food_1.default, 4],
-        [Production_1.default, 2],
+        [Food_1.default, 8],
+        [Production_1.default, 3],
         [Trade_1.default, 1],
-    ]) >= 120), new Criterion_1.default((goodyHut) => goodyHut
+    ]) >= 160), new Criterion_1.default((goodyHut) => goodyHut
         .tile()
         .getSurroundingArea(4)
         .every((tile) => cityRegistry.getByTile(tile).length === 0)), new Effect_1.default((goodyHut, unit) => new GoodyHuts_1.City(goodyHut, unit))),

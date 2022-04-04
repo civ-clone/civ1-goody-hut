@@ -48,10 +48,10 @@ export const getRules: (
           .tile()
           .getSurroundingArea()
           .score(unit.player(), [
-            [Food, 4],
-            [Production, 2],
+            [Food, 8],
+            [Production, 3],
             [Trade, 1],
-          ]) >= 120
+          ]) >= 160
     ),
     new Criterion((goodyHut) =>
       goodyHut
