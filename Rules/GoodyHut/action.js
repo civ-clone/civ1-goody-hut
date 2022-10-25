@@ -24,7 +24,7 @@ const getRules = (playerResearchRegistry = PlayerResearchRegistry_1.instance, ci
     ]) >= 160), new Criterion_1.default((goodyHut) => goodyHut
         .tile()
         .getSurroundingArea(4)
-        .every((tile) => cityRegistry.getByTile(tile).length === 0)), new Effect_1.default((goodyHut, unit) => new GoodyHuts_1.City(goodyHut, unit))),
+        .every((tile) => cityRegistry.getByTile(tile) !== null)), new Effect_1.default((goodyHut, unit) => new GoodyHuts_1.City(goodyHut, unit))),
     new Action_1.default(new Effect_1.default((goodyHut, unit) => new GoodyHuts_1.Gold(goodyHut, unit))),
     new Action_1.default(new Effect_1.default((goodyHut, unit) => new GoodyHuts_1.Unit(goodyHut, unit))),
 ];

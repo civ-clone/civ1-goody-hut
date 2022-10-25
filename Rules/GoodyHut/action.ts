@@ -57,7 +57,7 @@ export const getRules: (
       goodyHut
         .tile()
         .getSurroundingArea(4)
-        .every((tile) => cityRegistry.getByTile(tile).length === 0)
+        .every((tile) => cityRegistry.getByTile(tile) !== null)
     ),
     new Effect(
       (goodyHut: GoodyHut, unit: PlayerUnit) => new City(goodyHut, unit)
