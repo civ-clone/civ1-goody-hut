@@ -13,10 +13,12 @@ import Unit from '@civ-clone/core-unit/Unit';
 
 export const getRules: (
   goodyHutRegistry?: GoodyHutRegistry,
-  engine?: Engine
+  engine?: Engine,
+  randomNumberGenerator?: () => number
 ) => Discovered[] = (
   goodyHutRegistry: GoodyHutRegistry = goodyHutRegistryInstance,
-  engine: Engine = engineInstance
+  engine: Engine = engineInstance,
+  randomNumberGenerator: () => number = () => Math.random()
 ): Discovered[] => [
   new Discovered(
     new Effect((goodyHut: GoodyHut): void =>
@@ -28,7 +30,9 @@ export const getRules: (
       const availableGoodyHutActions = goodyHut.actions(unit),
         randomAction =
           availableGoodyHutActions[
-            Math.floor(availableGoodyHutActions.length * Math.random())
+            Math.floor(
+              availableGoodyHutActions.length * randomNumberGenerator()
+            )
           ];
 
       goodyHut.action(randomAction);
