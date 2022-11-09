@@ -17,14 +17,14 @@ const getRules = (playerResearchRegistry = PlayerResearchRegistry_1.instance, ci
     new Action_1.default(new Criterion_1.default((goodyHut) => [Terrains_1.Grassland, Terrains_1.Plains, Terrains_1.River].some((TerrainType) => goodyHut.tile().terrain() instanceof TerrainType)), new Criterion_1.default((goodyHut, unit) => goodyHut
         .tile()
         .getSurroundingArea()
-        .score(unit.player(), [
+        .score(null, [
         [Food_1.default, 8],
         [Production_1.default, 3],
         [Trade_1.default, 1],
-    ]) >= 160), new Criterion_1.default((goodyHut) => goodyHut
+    ]) >= 150), new Criterion_1.default((goodyHut) => goodyHut
         .tile()
         .getSurroundingArea(4)
-        .every((tile) => cityRegistry.getByTile(tile) !== null)), new Effect_1.default((goodyHut, unit) => new GoodyHuts_1.City(goodyHut, unit))),
+        .every((tile) => cityRegistry.getByTile(tile) === null)), new Effect_1.default((goodyHut, unit) => new GoodyHuts_1.City(goodyHut, unit))),
     new Action_1.default(new Effect_1.default((goodyHut, unit) => new GoodyHuts_1.Gold(goodyHut, unit))),
     new Action_1.default(new Effect_1.default((goodyHut, unit) => new GoodyHuts_1.Unit(goodyHut, unit))),
 ];

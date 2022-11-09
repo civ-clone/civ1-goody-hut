@@ -47,17 +47,17 @@ export const getRules: (
         goodyHut
           .tile()
           .getSurroundingArea()
-          .score(unit.player(), [
+          .score(null, [
             [Food, 8],
             [Production, 3],
             [Trade, 1],
-          ]) >= 160
+          ]) >= 150
     ),
     new Criterion((goodyHut) =>
       goodyHut
         .tile()
         .getSurroundingArea(4)
-        .every((tile) => cityRegistry.getByTile(tile) !== null)
+        .every((tile) => cityRegistry.getByTile(tile) === null)
     ),
     new Effect(
       (goodyHut: GoodyHut, unit: PlayerUnit) => new City(goodyHut, unit)
