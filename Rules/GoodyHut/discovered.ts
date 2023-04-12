@@ -9,6 +9,7 @@ import {
 import Discovered from '@civ-clone/core-goody-hut/Rules/Discovered';
 import Effect from '@civ-clone/core-rule/Effect';
 import GoodyHut from '@civ-clone/core-goody-hut/GoodyHut';
+import High from '@civ-clone/core-rule/Priorities/High';
 import Unit from '@civ-clone/core-unit/Unit';
 
 export const getRules: (
@@ -41,7 +42,8 @@ export const getRules: (
   new Discovered(
     new Effect((goodyHut: GoodyHut, unit: Unit): void => {
       engine.emit('goody-hut:discovered', goodyHut, unit);
-    })
+    }),
+    new High()
   ),
 ];
 
