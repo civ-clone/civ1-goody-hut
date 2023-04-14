@@ -42,8 +42,7 @@ export const getRules: (
   new Discovered(
     new Effect((goodyHut: GoodyHut, unit: Unit): void => {
       engine.emit('goody-hut:discovered', goodyHut, unit);
-    }),
-    new High()
+    })
   ),
 ];
 

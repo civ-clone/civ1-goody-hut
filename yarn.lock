@@ -1211,13 +1211,13 @@ __metadata:
   linkType: hard
 
 "@civ-clone/base-unit-action-attack@npm:^0.1.0":
-  version: 0.1.4
-  resolution: "@civ-clone/base-unit-action-attack@npm:0.1.4"
+  version: 0.1.5
+  resolution: "@civ-clone/base-unit-action-attack@npm:0.1.5"
   dependencies:
     "@civ-clone/core-rule": ^0.1.2
     "@civ-clone/core-unit": ^0.1.0
     "@civ-clone/core-world": ^0.1.9
-  checksum: c59f6a9b05efb405857884d209636201e491b87d4eb7bb788f7f62c43911478c3f74a2a1721183bd750b4d52bc70a150bdc682a27debb2a0732b16a63891a879
+  checksum: 51f279e53947145157b85ef3d486cdf96a7dab58bf76ea4ceceed6e9dcbc9fd03ab57185b8c00e11fbe28276058593fa108ab5084d54a384a721f559e2320ab6
   languageName: node
   linkType: hard
 
@@ -1324,11 +1324,11 @@ __metadata:
   linkType: hard
 
 "@civ-clone/base-unit-action-disband@npm:^0.1.0":
-  version: 0.1.1
-  resolution: "@civ-clone/base-unit-action-disband@npm:0.1.1"
+  version: 0.1.2
+  resolution: "@civ-clone/base-unit-action-disband@npm:0.1.2"
   dependencies:
     "@civ-clone/core-unit": ^0.1.15
-  checksum: 2d9a8577c37ec45749448665923280c2883a10e7d9a561a67a4f8d0f45ffa07968888d1a4df41a1a7e16a405b754d7e126b545ab80e37adc6f3a893610fb3c8c
+  checksum: 206c2f865ad776e726cb07a0bdd7d37deaefea95c493cb85ab07fe654ce59c0e4111238314fdd88752a35c62b484e97df4909143abac18afbc1147216d4af71c
   languageName: node
   linkType: hard
 
@@ -1444,12 +1444,12 @@ __metadata:
   linkType: hard
 
 "@civ-clone/base-unit-action-unload@npm:^0.1.0":
-  version: 0.1.1
-  resolution: "@civ-clone/base-unit-action-unload@npm:0.1.1"
+  version: 0.1.2
+  resolution: "@civ-clone/base-unit-action-unload@npm:0.1.2"
   dependencies:
-    "@civ-clone/base-unit-type-naval-transport": ^0.1.0
     "@civ-clone/core-unit": ^0.1.0
-  checksum: 94bcbc1ce2a6b41cd017d859fc7ae2d3877542f0dd4f614a9011a09932df7dfc0183c7b1516cee60d17c46adeab9b88b6e22c4e1d031e83650889e418fc1a1a3
+    "@civ-clone/core-unit-transport": ^0.1.0
+  checksum: c8a88698761cf07c200b8b8677c389272e0247aa4bb68335a80a0229115a5309b89f0615ff6ffa96c01b08b8d45229eb28a2d5f5048893fd91c875d677076635
   languageName: node
   linkType: hard
 
@@ -2236,8 +2236,8 @@ __metadata:
   linkType: hard
 
 "@civ-clone/core-diplomacy@npm:^0.1.0":
-  version: 0.1.1
-  resolution: "@civ-clone/core-diplomacy@npm:0.1.1"
+  version: 0.1.2
+  resolution: "@civ-clone/core-diplomacy@npm:0.1.2"
   dependencies:
     "@civ-clone/core-client": ^0.1.1
     "@civ-clone/core-data-object": ^0.1.0
@@ -2245,7 +2245,7 @@ __metadata:
     "@civ-clone/core-registry": ^0.1.0
     "@civ-clone/core-rule": ^0.1.3
     "@civ-clone/core-turn-based-game": ^0.1.5
-  checksum: 543bbb9acf3610d91c485e242f11616b884b0da0bf5d64f9e1ce2c4ca463932c9d52c575d050a38b659ac9e492d1d8944225c21eb2773344eda2cb736ab5ef0c
+  checksum: 9ce78bf3573768926809e84b759b33c2398551ba44a37c010bc8baf80f5861aea4a41e2406421cf21c10310cb16c3c611cd6004a661bcbcbe0ceafbf339c20ff
   languageName: node
   linkType: hard
 
@@ -2260,15 +2260,15 @@ __metadata:
   linkType: hard
 
 "@civ-clone/core-goody-hut@npm:^0.1.0":
-  version: 0.1.4
-  resolution: "@civ-clone/core-goody-hut@npm:0.1.4"
+  version: 0.1.5
+  resolution: "@civ-clone/core-goody-hut@npm:0.1.5"
   dependencies:
     "@civ-clone/core-data-object": ^0.1.0
     "@civ-clone/core-registry": ^0.1.0
     "@civ-clone/core-rule": ^0.1.0
     "@civ-clone/core-unit": ^0.1.0
     "@civ-clone/core-world": ^0.1.0
-  checksum: 624f7bfe3526e4b0048d4033585f25709c2a0e3bb9335b3b2ef90de15d1d94e21d0e33f293228ae5cc853501759fe3e0b9482a0cfa89462c83dd280621c9484e
+  checksum: 57f6fdeeac2745aec698359d2600f34e3de5afbe9fcef8e67d259130d33912abe8e2e7fb4dbff2c27795f7701845f6c27787b822d2c521fd39925d949b546e58
   languageName: node
   linkType: hard
 
@@ -2482,8 +2482,8 @@ __metadata:
   linkType: hard
 
 "@civ-clone/library-diplomacy@npm:^0.1.0":
-  version: 0.1.0
-  resolution: "@civ-clone/library-diplomacy@npm:0.1.0"
+  version: 0.1.1
+  resolution: "@civ-clone/library-diplomacy@npm:0.1.1"
   dependencies:
     "@civ-clone/base-city-yield-gold": ^0.1.0
     "@civ-clone/base-diplomacy-declaration-peace": ^0.1.0
@@ -2494,7 +2494,7 @@ __metadata:
     "@civ-clone/core-rule": ^0.1.3
     "@civ-clone/core-science": ^0.1.4
     "@civ-clone/core-treasury": ^0.1.4
-  checksum: d249185a05010cf6a99a38aaffac976801356cde77b0bd884b0c53e9bfeeaf0fff4dca52570de8f42a145ef9817035d421bf7e7bab609b867cc7b53a5ca09563
+  checksum: ce83964527c2dd856d5656e0fc8d758fbb8f697de9ff03c341bcbff9a9d66b6f8f2dc8b899e6a1af2f7e66919c8a5914390c861bf36bedee7a1363045b0ac1a9
   languageName: node
   linkType: hard
 
