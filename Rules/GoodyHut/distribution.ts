@@ -5,13 +5,14 @@ import {
 import Criterion from '@civ-clone/core-rule/Criterion';
 import Distribution from '@civ-clone/core-goody-hut/Rules/Distribution';
 import Tile from '@civ-clone/core-world/Tile';
+import { instance as rngInstance } from '@civ-clone/core-random';
 
 export const getRules: (
   goodyHutRegistry?: GoodyHutRegistry,
   randomNumberGenerator?: () => number
 ) => Distribution[] = (
   goodyHutRegistry: GoodyHutRegistry = goodyHutRegistryInstance,
-  randomNumberGenerator: () => number = () => Math.random()
+  randomNumberGenerator: () => number = rngInstance
 ): Distribution[] => [
   new Distribution(new Criterion((tile: Tile): boolean => tile.isLand())),
   new Distribution(

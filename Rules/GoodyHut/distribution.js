@@ -4,7 +4,8 @@ exports.getRules = void 0;
 const GoodyHutRegistry_1 = require("@civ-clone/core-goody-hut/GoodyHutRegistry");
 const Criterion_1 = require("@civ-clone/core-rule/Criterion");
 const Distribution_1 = require("@civ-clone/core-goody-hut/Rules/Distribution");
-const getRules = (goodyHutRegistry = GoodyHutRegistry_1.instance, randomNumberGenerator = () => Math.random()) => [
+const core_random_1 = require("@civ-clone/core-random");
+const getRules = (goodyHutRegistry = GoodyHutRegistry_1.instance, randomNumberGenerator = core_random_1.instance) => [
     new Distribution_1.default(new Criterion_1.default((tile) => tile.isLand())),
     new Distribution_1.default(new Criterion_1.default((tile) => tile
         .getSurroundingArea(3)

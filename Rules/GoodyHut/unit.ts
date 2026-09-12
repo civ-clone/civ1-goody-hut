@@ -11,6 +11,7 @@ import Effect from '@civ-clone/core-rule/Effect';
 import GoodyHut from '@civ-clone/core-goody-hut/GoodyHut';
 import Unit from '@civ-clone/core-unit/Unit';
 import UnitRule from '@civ-clone/base-goody-hut-unit/Rules/Unit';
+import { instance as rngInstance } from '@civ-clone/core-random';
 
 export const getRules: (
   goodyHutRegistry?: GoodyHutRegistry,
@@ -18,7 +19,7 @@ export const getRules: (
   ruleRegistry?: RuleRegistry
 ) => UnitRule[] = (
   goodyHutRegistry: GoodyHutRegistry = goodyHutRegistryInstance,
-  randomNumberGenerator: () => number = (): number => Math.random(),
+  randomNumberGenerator: () => number = rngInstance,
   ruleRegistry: RuleRegistry = ruleRegistryInstance
 ): UnitRule[] => [
   new UnitRule(
