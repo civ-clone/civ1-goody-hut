@@ -33,6 +33,7 @@
     "@civ-clone/civ1-world": "github:civ-clone/civ1-world",
     "@civ-clone/core-city": "^0.1.0",
     "@civ-clone/core-engine": "^0.1.0",
+    "@civ-clone/core-game": "^0.1.1",
     "@civ-clone/core-goody-hut": "^0.1.0",
     "@civ-clone/core-random": "^0.1.0",
     "@civ-clone/core-rule": "^0.1.0",
