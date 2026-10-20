@@ -13,7 +13,12 @@ const Production_1 = require("@civ-clone/base-terrain-yield-production/Productio
 const Trade_1 = require("@civ-clone/base-terrain-yield-trade/Trade");
 const getRules = (playerResearchRegistry = PlayerResearchRegistry_1.instance, cityRegistry = CityRegistry_1.instance) => [
     // TODO: Have an action for when there are no actions ("The hut is long abandoned...")
-    new Action_1.default(new Criterion_1.default((goodyHut, unit) => playerResearchRegistry.getByPlayer(unit.player()).available().length > 0), new Effect_1.default((goodyHut, unit) => new GoodyHuts_1.Advance(goodyHut, unit))),
+    // Never a repeatable advance (Future Technology): v474.05 only offers an advance whose prerequisites are known, and
+    //  a Future Technology's never are (OpenCivOne `UnitManagement.cs` `F0_1866_1931_FoundAncientWisdom`).
+    new Action_1.default(new Criterion_1.default((goodyHut, unit) => playerResearchRegistry
+        .getByPlayer(unit.player())
+        .available()
+        .some((AvailableAdvance) => !AvailableAdvance.repeatable)), new Effect_1.default((goodyHut, unit) => new GoodyHuts_1.Advance(goodyHut, unit))),
     new Action_1.default(new Criterion_1.default((goodyHut) => [Terrains_1.Grassland, Terrains_1.Plains, Terrains_1.River].some((TerrainType) => goodyHut.tile().terrain() instanceof TerrainType)), new Criterion_1.default((goodyHut, unit) => goodyHut
         .tile()
         .getSurroundingArea()
