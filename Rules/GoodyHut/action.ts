@@ -26,10 +26,14 @@ export const getRules: (
   cityRegistry: CityRegistry = cityRegistryInstance
 ): Action[] => [
   // TODO: Have an action for when there are no actions ("The hut is long abandoned...")
+  // Never a repeatable advance (Future Technology): v474.05 only offers an advance whose prerequisites are known, and
+  //  a Future Technology's never are (OpenCivOne `UnitManagement.cs` `F0_1866_1931_FoundAncientWisdom`).
   new Action(
-    new Criterion(
-      (goodyHut: GoodyHut, unit: PlayerUnit): boolean =>
-        playerResearchRegistry.getByPlayer(unit.player()).available().length > 0
+    new Criterion((goodyHut: GoodyHut, unit: PlayerUnit): boolean =>
+      playerResearchRegistry
+        .getByPlayer(unit.player())
+        .available()
+        .some((AvailableAdvance): boolean => !AvailableAdvance.repeatable)
     ),
     new Effect(
       (goodyHut: GoodyHut, unit: PlayerUnit) => new Advance(goodyHut, unit)
