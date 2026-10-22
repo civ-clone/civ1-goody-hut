@@ -21,6 +21,7 @@
     "typescript": "^4.0.0"
   },
   "dependencies": {
+    "@civ-clone/base-civilization-barbarian": "^0.1.0",
     "@civ-clone/base-goody-hut-advance": "^0.1.0",
     "@civ-clone/base-goody-hut-city": "^0.1.0",
     "@civ-clone/base-goody-hut-gold": "^0.1.0",
