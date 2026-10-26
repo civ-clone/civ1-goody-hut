@@ -9,7 +9,7 @@ import { Game, defaultGame } from '@civ-clone/core-game';
 
 export const register = (game: Game): void =>
   game.rules.register(
-    ...goodyHutAction(game.playerResearch, game.cities),
+    ...goodyHutAction(game.playerResearch, game.cities, game.rules),
     ...goodyHutActionPerformed(game.engine),
     ...goodyHutDiscovered(game.goodyHuts, game.engine, game.rng),
     ...goodyHutDistribution(game.goodyHuts, game.rng),

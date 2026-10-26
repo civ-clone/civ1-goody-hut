@@ -1,8 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Unit = exports.Gold = exports.City = exports.Advance = void 0;
+exports.Unit = exports.Gold = exports.City = exports.Barbarians = exports.Advance = void 0;
 var Advance_1 = require("@civ-clone/base-goody-hut-advance/Advance");
 Object.defineProperty(exports, "Advance", { enumerable: true, get: function () { return Advance_1.Advance; } });
+var Barbarians_1 = require("./Barbarians");
+Object.defineProperty(exports, "Barbarians", { enumerable: true, get: function () { return Barbarians_1.Barbarians; } });
 var City_1 = require("@civ-clone/base-goody-hut-city/City");
 Object.defineProperty(exports, "City", { enumerable: true, get: function () { return City_1.City; } });
 var Gold_1 = require("@civ-clone/base-goody-hut-gold/Gold");
