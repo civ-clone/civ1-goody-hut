@@ -18,6 +18,7 @@
   },
   "devDependencies": {
     "@civ-clone/core-player": "^0.1.10",
+    "@civ-clone/core-terrain": "^0.1.4",
     "@types/chai": "^4.0.0",
     "@types/mocha": "^10.0.0",
     "@types/node": "^16.0.0",
@@ -29,7 +30,7 @@
   },
   "dependencies": {
     "@civ-clone/base-civilization-barbarian": "^0.1.0",
-    "@civ-clone/base-goody-hut": "github:civ-clone/base-goody-hut#feat/goody-hut-wiring",
+    "@civ-clone/base-goody-hut": "^0.1.0",
     "@civ-clone/base-goody-hut-advance": "^0.1.0",
     "@civ-clone/base-goody-hut-city": "^0.1.0",
     "@civ-clone/base-goody-hut-gold": "^0.1.0",
