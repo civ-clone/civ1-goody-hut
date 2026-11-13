@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@civ-clone/base-civilization-barbarian": "^0.1.0",
+    "@civ-clone/base-goody-hut": "github:civ-clone/base-goody-hut#feat/goody-hut-wiring",
     "@civ-clone/base-goody-hut-advance": "^0.1.0",
     "@civ-clone/base-goody-hut-city": "^0.1.0",
     "@civ-clone/base-goody-hut-gold": "^0.1.0",
@@ -46,7 +47,6 @@
     "@civ-clone/core-random": "^0.1.0",
     "@civ-clone/core-rule": "^0.1.0",
     "@civ-clone/core-science": "^0.1.0",
-    "@civ-clone/core-terrain": "^0.1.0",
     "@civ-clone/core-unit": "^0.1.0",
     "@civ-clone/core-world": "^0.1.24"
   }

@@ -8,6 +8,13 @@ import {
   PlayerResearchRegistry,
   instance as playerResearchRegistryInstance,
 } from '@civ-clone/core-science/PlayerResearchRegistry';
+import {
+  advanceToLearn,
+  noCityWithin,
+  onTerrain,
+  remoteFromCities,
+  scoresAtLeast,
+} from '@civ-clone/base-goody-hut/lib/outcomes';
 import Action from '@civ-clone/core-goody-hut/Rules/Action';
 import Criterion from '@civ-clone/core-rule/Criterion';
 import Effect from '@civ-clone/core-rule/Effect';
@@ -19,7 +26,6 @@ import {
   RuleRegistry,
   instance as ruleRegistryInstance,
 } from '@civ-clone/core-rule/RuleRegistry';
-import Terrain from '@civ-clone/core-terrain/Terrain';
 import Trade from '@civ-clone/base-terrain-yield-trade/Trade';
 
 // No city of any civilization is nearer than this to a hut that unleashes barbarians.
@@ -34,14 +40,7 @@ export const unleashesBarbarians = (
   unit: PlayerUnit,
   cityRegistry: Pick<CityRegistry, 'entries' | 'getByPlayer'>
 ): boolean =>
-  cityRegistry.getByPlayer(unit.player()).length > 0 &&
-  cityRegistry
-    .entries()
-    .every(
-      (city): boolean =>
-        city.destroyed() ||
-        city.tile().distanceFrom(goodyHut.tile()) >= BARBARIANS_FROM_CITIES
-    );
+  remoteFromCities(goodyHut, unit, BARBARIANS_FROM_CITIES, cityRegistry);
 
 export const getRules: (
   playerResearchRegistry?: PlayerResearchRegistry,
@@ -56,40 +55,24 @@ export const getRules: (
   // Never a repeatable advance (Future Technology): v474.05 only offers an advance whose prerequisites are known, and
   //  a Future Technology's never are (OpenCivOne `UnitManagement.cs` `F0_1866_1931_FoundAncientWisdom`).
   new Action(
-    new Criterion((goodyHut: GoodyHut, unit: PlayerUnit): boolean =>
-      playerResearchRegistry
-        .getByPlayer(unit.player())
-        .available()
-        .some((AvailableAdvance): boolean => !AvailableAdvance.repeatable)
-    ),
+    new Criterion(advanceToLearn(playerResearchRegistry)),
     new Effect(
       (goodyHut: GoodyHut, unit: PlayerUnit) => new Advance(goodyHut, unit)
     )
   ),
   new Action(
-    new Criterion((goodyHut) =>
-      [Grassland, Plains, River].some(
-        (TerrainType: typeof Terrain) =>
-          goodyHut.tile().terrain() instanceof TerrainType
+    new Criterion(onTerrain([Grassland, Plains, River])),
+    new Criterion(
+      scoresAtLeast(
+        [
+          [Food, 8],
+          [Production, 3],
+          [Trade, 1],
+        ],
+        150
       )
     ),
-    new Criterion(
-      (goodyHut: GoodyHut, unit: PlayerUnit) =>
-        goodyHut
-          .tile()
-          .getSurroundingArea()
-          .score(null, [
-            [Food, 8],
-            [Production, 3],
-            [Trade, 1],
-          ]) >= 150
-    ),
-    new Criterion((goodyHut) =>
-      goodyHut
-        .tile()
-        .getSurroundingArea(4)
-        .every((tile) => cityRegistry.getByTile(tile) === null)
-    ),
+    new Criterion(noCityWithin(4, cityRegistry)),
     new Effect(
       (goodyHut: GoodyHut, unit: PlayerUnit) => new City(goodyHut, unit)
     )

@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getRules = void 0;
 const GoodyHutRegistry_1 = require("@civ-clone/core-goody-hut/GoodyHutRegistry");
+const entering_1 = require("@civ-clone/base-goody-hut/lib/entering");
 const Criterion_1 = require("@civ-clone/core-rule/Criterion");
 const Effect_1 = require("@civ-clone/core-rule/Effect");
 const Moved_1 = require("@civ-clone/core-unit/Rules/Moved");
@@ -9,10 +10,7 @@ const isBarbarian_1 = require("@civ-clone/base-civilization-barbarian/isBarbaria
 const getRules = (goodyHutRegistry = GoodyHutRegistry_1.instance) => [
     new Moved_1.default(
     // Barbarians don't open huts (civ-clone/web-renderer#169).
-    new Criterion_1.default((unit) => !(0, isBarbarian_1.default)(unit.player())), new Criterion_1.default((unit) => goodyHutRegistry.getByTile(unit.tile()) !== null), new Effect_1.default((unit) => {
-        const goodyHut = goodyHutRegistry.getByTile(unit.tile());
-        goodyHut.process(unit);
-    })),
+    new Criterion_1.default((unit) => !(0, isBarbarian_1.default)(unit.player())), new Criterion_1.default((0, entering_1.onHut)(goodyHutRegistry)), new Effect_1.default((0, entering_1.enterHut)(goodyHutRegistry))),
 ];
 exports.getRules = getRules;
 exports.default = exports.getRules;

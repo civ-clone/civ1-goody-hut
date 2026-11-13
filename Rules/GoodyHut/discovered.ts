@@ -6,11 +6,13 @@ import {
   GoodyHutRegistry,
   instance as goodyHutRegistryInstance,
 } from '@civ-clone/core-goody-hut/GoodyHutRegistry';
+import {
+  emitHutDiscovered,
+  performRandomAction,
+  removeHut,
+} from '@civ-clone/base-goody-hut/lib/entering';
 import Discovered from '@civ-clone/core-goody-hut/Rules/Discovered';
 import Effect from '@civ-clone/core-rule/Effect';
-import GoodyHut from '@civ-clone/core-goody-hut/GoodyHut';
-import High from '@civ-clone/core-rule/Priorities/High';
-import Unit from '@civ-clone/core-unit/Unit';
 import { instance as rngInstance } from '@civ-clone/core-random';
 
 export const getRules: (
@@ -22,29 +24,9 @@ export const getRules: (
   engine: Engine = engineInstance,
   randomNumberGenerator: () => number = rngInstance
 ): Discovered[] => [
-  new Discovered(
-    new Effect((goodyHut: GoodyHut): void =>
-      goodyHutRegistry.unregister(goodyHut)
-    )
-  ),
-  new Discovered(
-    new Effect((goodyHut: GoodyHut, unit: Unit): void => {
-      const availableGoodyHutActions = goodyHut.actions(unit),
-        randomAction =
-          availableGoodyHutActions[
-            Math.floor(
-              availableGoodyHutActions.length * randomNumberGenerator()
-            )
-          ];
-
-      goodyHut.action(randomAction);
-    })
-  ),
-  new Discovered(
-    new Effect((goodyHut: GoodyHut, unit: Unit): void => {
-      engine.emit('goody-hut:discovered', goodyHut, unit);
-    })
-  ),
+  new Discovered(new Effect(removeHut(goodyHutRegistry))),
+  new Discovered(new Effect(performRandomAction(randomNumberGenerator))),
+  new Discovered(new Effect(emitHutDiscovered(engine))),
 ];
 
 export default getRules;
