@@ -1,8 +1,6 @@
-import GoodyHut from '@civ-clone/core-goody-hut/GoodyHut';
-import PlayerUnit from '@civ-clone/core-unit/Unit';
-import Rule from '@civ-clone/core-rule/Rule';
-
 // The horde a goody hut unleashes: the hut, and the unit that entered it.
-export class Barbarians extends Rule<[GoodyHut, PlayerUnit], void> {}
+export { Barbarians } from '@civ-clone/base-goody-hut-barbarians/Rules/Barbarians';
+
+import { Barbarians } from '@civ-clone/base-goody-hut-barbarians/Rules/Barbarians';
 
 export default Barbarians;
