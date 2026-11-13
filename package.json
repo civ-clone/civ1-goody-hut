@@ -32,7 +32,7 @@
     "@civ-clone/base-civilization-barbarian": "^0.1.0",
     "@civ-clone/base-goody-hut": "^0.1.0",
     "@civ-clone/base-goody-hut-advance": "^0.1.0",
-    "@civ-clone/base-goody-hut-barbarians": "github:civ-clone/base-goody-hut-barbarians#feat/barbarians",
+    "@civ-clone/base-goody-hut-barbarians": "^0.1.0",
     "@civ-clone/base-goody-hut-city": "^0.1.0",
     "@civ-clone/base-goody-hut-gold": "^0.1.0",
     "@civ-clone/base-goody-hut-unit": "^0.1.0",
